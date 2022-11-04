@@ -1157,7 +1157,9 @@ __metadata:
     "@types/react-dom": 18.0.8
     eslint: 8.26.0
     eslint-config-next: 13.0.1
+    eslint-config-prettier: ^8.5.0
     next: 13.0.1
+    prettier: ^2.7.1
     react: 18.2.0
     react-dom: 18.2.0
     typescript: 4.8.4
@@ -2154,7 +2156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
+"react@npm:18.2.0, react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -2628,6 +2630,7 @@ __metadata:
     eslint: ^8.26.0
     eslint-config-prettier: ^8.5.0
     prettier: ^2.7.1
+    react: ^18.2.0
     satori: ^0.0.43
     typescript: ^4.8.4
   languageName: unknown
