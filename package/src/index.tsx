@@ -1,6 +1,9 @@
 import satori from "satori";
 
-export function getWnft(): Promise<string> {
+import { WnftArgs } from "./util";
+
+export type { WnftArgs };
+export function getWnft(_args: WnftArgs): Promise<string> {
   return satori(
     <div
       style={{

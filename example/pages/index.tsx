@@ -1,29 +1,45 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { getWnft } from "wnft";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import * as React from "react";
+import { unstable_serialize } from "swr";
+import useSWRImmutable from "swr/immutable";
+import { getWnft, WnftArgs } from "wnft";
 
-type Props = { testProp: string | null };
+const initialArgs: Readonly<WnftArgs> = {
+  theme: "dark",
+  title: "Hello world",
+  featuredImage: null,
+  avatar: null,
+  displayName: "sdf",
+  address: "0x123",
+  accent: "blue",
+};
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
-  let wnft: string | null;
-  try {
-    wnft = await getWnft();
-  } catch (err) {
-    console.log("err", err);
-    wnft = null;
-  }
+type Props = {
+  initialWnft: string;
+};
+
+export const getStaticProps: GetStaticProps<Props> = async (_context) => {
+  const wnft = await getWnft(initialArgs);
 
   return {
     props: {
-      testProp: wnft,
+      initialWnft: wnft,
     },
   };
 };
 
 export default function Home(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
+  props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  console.log(props.testProp);
-  return <div>{`${props.testProp}`}</div>;
+  const [wnftArgs, _setWnftArgs] = React.useState<WnftArgs>(initialArgs);
+
+  const wnftQuery = useSWRImmutable<string, unknown, WnftArgs>(
+    wnftArgs,
+    React.useCallback((args: WnftArgs) => {
+      return getWnft(args);
+    }, []),
+    { fallback: { [unstable_serialize(initialArgs)]: props.initialWnft } }
+  );
+
+  return <div>{`${wnftQuery.data}`}</div>;
 }
