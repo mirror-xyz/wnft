@@ -1,1 +1,1 @@
-export const okok: number = 123
+export const okok = 123;
