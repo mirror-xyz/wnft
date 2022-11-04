@@ -14,11 +14,10 @@
     "jsx": "preserve",
     "incremental": true,
     "sourceMap": true,
-    "outDir": "dist",
-    "rootDir": "src",
+    "outDir": "./dist",
     "declarationMap": true,
     "declaration": true
   },
-  // "include": ["src/**/*"],
-  // "exclude": ["node_modules"],
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"],
 }
