@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "wnft",
+  "name": "wnft-workspace",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "workspaces": [
+    "package",
     "example"
   ],
   "author": "",

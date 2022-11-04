@@ -1,0 +1,13 @@
+{
+  "name": "wnft",
+  "version": "0.0.2",
+  "packageManager": "yarn@3.2.4",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "satori": "^0.0.43"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
