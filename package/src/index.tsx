@@ -1,19 +1,52 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
 import satori from "satori";
 
-import { WnftArgs } from "./util";
+import { darkTheme, lightTheme, SIZE, Theme, WnftArgs } from "./util";
+
+const interRegularPath = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../inter/Inter-Regular.woff"
+);
+const interRegularBuffer = fs.readFileSync(interRegularPath);
 
 export type { WnftArgs };
-export function getWnft(_args: WnftArgs): Promise<string> {
+export async function getWnft(args: WnftArgs): Promise<string> {
+  const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
+
   return satori(
     <div
       style={{
-        backgroundColor: "black",
+        backgroundColor: theme.background,
+        width: SIZE,
+        height: SIZE,
+        display: "flex",
       }}
-    ></div>,
+    >
+      <span
+        style={{
+          display: "flex",
+          fontFamily: "Inter",
+          color: theme.foreground,
+          fontSize: 300,
+        }}
+      >
+        {args.title}
+      </span>
+    </div>,
     {
-      width: 600,
-      height: 400,
-      fonts: [],
+      width: SIZE,
+      height: SIZE,
+      fonts: [
+        {
+          name: "Inter",
+          data: interRegularBuffer,
+          weight: 400,
+          style: "normal",
+        },
+      ],
     }
   );
 }

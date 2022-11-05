@@ -20,7 +20,8 @@
     "react-dom": "18.2.0",
     "swr": "^1.3.0",
     "typescript": "4.8.4",
-    "wnft": "*"
+    "wnft": "*",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
