@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath, pathToFileURL } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import url from "node:url";
 
 export type Accent =
   | "blue"
@@ -128,7 +128,7 @@ export const darkTheme: Theme = {
 export const SIZE = 2048;
 
 const interPath = path.resolve(
-  path.dirname(fileURLToPath(import.meta.url)),
+  path.dirname(url.fileURLToPath(import.meta.url)),
   "../inter"
 );
 
