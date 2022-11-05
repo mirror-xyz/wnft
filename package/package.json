@@ -1,6 +1,10 @@
 {
   "name": "wnft",
   "version": "0.0.2",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "packageManager": "yarn@3.2.4",
   "repository": {
     "type": "git",
@@ -8,7 +12,6 @@
   },
   "author": "Tyler Deitz <tylerdeitz@gmail.com>",
   "license": "MIT",
-  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "dependencies": {
     "node-fetch": "^3.2.10",

@@ -1,16 +1,15 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
 import satori from "satori";
 
-import { darkTheme, lightTheme, SIZE, Theme, WnftArgs } from "./util";
-
-const interRegularPath = path.resolve(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "../inter/Inter-Regular.woff"
-);
-const interRegularBuffer = fs.readFileSync(interRegularPath);
+import {
+  darkTheme,
+  fontWeight,
+  interRegularBuffer,
+  interSemiBoldBuffer,
+  lightTheme,
+  SIZE,
+  Theme,
+  WnftArgs,
+} from "./util.js";
 
 export type { WnftArgs };
 export async function getWnft(args: WnftArgs): Promise<string> {
@@ -23,17 +22,29 @@ export async function getWnft(args: WnftArgs): Promise<string> {
         width: SIZE,
         height: SIZE,
         display: "flex",
+        flexDirection: "column",
       }}
     >
       <span
         style={{
-          display: "flex",
           fontFamily: "Inter",
+          fontWeight: fontWeight.semiBold,
           color: theme.foreground,
           fontSize: 300,
         }}
       >
         {args.title}
+      </span>
+
+      <span
+        style={{
+          fontFamily: "Inter",
+          fontWeight: fontWeight.regular,
+          color: theme.foreground,
+          fontSize: 300,
+        }}
+      >
+        {args.address}
       </span>
     </div>,
     {
@@ -44,6 +55,12 @@ export async function getWnft(args: WnftArgs): Promise<string> {
           name: "Inter",
           data: interRegularBuffer,
           weight: 400,
+          style: "normal",
+        },
+        {
+          name: "Inter",
+          data: interSemiBoldBuffer,
+          weight: 600,
           style: "normal",
         },
       ],

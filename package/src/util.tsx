@@ -1,3 +1,7 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath, pathToFileURL } from "url";
+
 export type Accent =
   | "blue"
   | "green"
@@ -29,6 +33,11 @@ export type Theme = {
 } & Record<Accent, string> & {
     gradient: Record<`${Accent}${1 | 2}`, string>;
   };
+
+export const fontWeight = {
+  regular: 400,
+  semiBold: 600,
+} as const;
 
 export const lightTheme: Theme = {
   background: "#ffffff",
@@ -117,3 +126,14 @@ export const darkTheme: Theme = {
 };
 
 export const SIZE = 2048;
+
+const interPath = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../inter"
+);
+
+const interRegularPath = path.resolve(interPath, "Inter-Regular.woff");
+export const interRegularBuffer = fs.readFileSync(interRegularPath);
+
+const interSemiBoldPath = path.resolve(interPath, "Inter-SemiBold.woff");
+export const interSemiBoldBuffer = fs.readFileSync(interSemiBoldPath);
