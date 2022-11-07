@@ -2,10 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getWnft, WnftArgs } from "wnft";
 import { z } from "zod";
 
-export type Data = {
-  wnft: string;
-};
-
 const QuerySchema = z.object({
   theme: z.union([z.literal("light"), z.literal("dark")]),
   title: z.string(),
@@ -29,7 +25,7 @@ const QuerySchema = z.object({
 
 export default async function wnftApi(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
   const parse = QuerySchema.safeParse(req.query);
 

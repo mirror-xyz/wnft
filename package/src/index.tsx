@@ -26,6 +26,10 @@ export async function getWnft(args: WnftArgs): Promise<Buffer> {
         flexDirection: "column",
       }}
     >
+      <div
+        style={{ width: SIZE, height: SIZE / 2, backgroundColor: "salmon" }}
+      />
+
       <span
         style={{
           fontFamily: "Inter",
