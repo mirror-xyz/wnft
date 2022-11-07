@@ -51,8 +51,6 @@ export default function Home() {
     }
   );
 
-  console.log("force build");
-
   return (
     <div
       style={{
