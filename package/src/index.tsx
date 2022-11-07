@@ -1,3 +1,4 @@
+import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
 
 import {
@@ -12,10 +13,10 @@ import {
 } from "./util.js";
 
 export type { WnftArgs };
-export async function getWnft(args: WnftArgs): Promise<string> {
+export async function getWnft(args: WnftArgs): Promise<Buffer> {
   const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
 
-  return satori(
+  const svgString = await satori(
     <div
       style={{
         backgroundColor: theme.background,
@@ -66,4 +67,18 @@ export async function getWnft(args: WnftArgs): Promise<string> {
       ],
     }
   );
+
+  const resvg = new Resvg(svgString, {
+    fitTo: {
+      mode: "width",
+      value: SIZE,
+    },
+    font: {
+      loadSystemFonts: false,
+    },
+  });
+
+  const pngData = resvg.render();
+
+  return pngData.asPng();
 }

@@ -49,8 +49,11 @@ export default async function wnftApi(
       "Cache-Control",
       "public, immutable, no-transform, max-age=31536000"
     );
-    res.status(200).json({ wnft: wnft });
+    res.setHeader("Content-Type", "image/png");
+    res.status(200).write(wnft);
+    res.end();
   } else {
     res.status(500);
+    res.end();
   }
 }

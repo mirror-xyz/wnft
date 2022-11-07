@@ -1,95 +1,56 @@
 import * as React from "react";
-import useSWRImmutable from "swr/immutable";
 import type { WnftArgs } from "wnft";
 
 import { ObjectEntries } from "../util";
-import type { Data as WnftApiData } from "./api/wnft";
 
 type EditableArgs = Readonly<
   Pick<WnftArgs, "title" | "displayName" | "featuredImageUrl">
 >;
 
-const initialArgs: EditableArgs = {
-  title: "Hello world",
-  displayName: "asdf",
-  featuredImageUrl: null,
-};
-
-const getDataUrlFromFile = (file: Blob): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new window.FileReader();
-    reader.addEventListener(
-      "load",
-      () => {
-        if (typeof reader.result === "string") {
-          resolve(reader.result);
-        } else {
-          reject();
-        }
-      },
-      false
-    );
-    reader.addEventListener("error", () => {
-      reject();
-    });
-
-    reader.readAsDataURL(file);
-  });
-};
-
-async function getWnftDataUrl(args: WnftArgs) {
-  const url = new URL("/api/wnft", document.baseURI);
-  for (const [key, value] of Object.entries(args) as ObjectEntries<
-    typeof args
-  >) {
-    if (value !== null) {
-      url.searchParams.set(key, value);
-    }
-  }
-  const wnft = ((await (await fetch(url.toString())).json()) as WnftApiData)
-    .wnft;
-
-  if (!wnft) {
-    throw new Error();
-  }
-
-  return getDataUrlFromFile(
-    new Blob([wnft], {
-      type: "image/svg+xml",
-    })
-  );
-}
-
-async function getWnfts(args: EditableArgs) {
-  return Promise.all([
-    getWnftDataUrl({
-      title: args.title,
-      displayName: args.displayName,
-      featuredImageUrl: args.featuredImageUrl,
-      theme: "dark",
-      avatarUrl: null,
-      address: "0x123",
-      accent: "blue",
-    }),
-
-    getWnftDataUrl({
-      title: args.title,
-      displayName: args.displayName,
-      featuredImageUrl: args.featuredImageUrl,
-      theme: "light",
-      avatarUrl: null,
-      address: "0x123",
-      accent: "blue",
-    }),
-  ]);
-}
-
 export default function Home() {
-  const [wnftArgs, _setWnftArgs] = React.useState<EditableArgs>(initialArgs);
+  const [wnftArgs, _setWnftArgs] = React.useState<EditableArgs>({
+    title: "Hello world",
+    displayName: "asdf",
+    featuredImageUrl: null,
+  });
 
-  const wnftQuery = useSWRImmutable<Array<string>, unknown, EditableArgs>(
-    wnftArgs,
-    getWnfts
+  const imageUrls = (
+    [
+      {
+        theme: "dark",
+        avatarUrl: null,
+        address: "0x123",
+        accent: "blue",
+      },
+      {
+        theme: "light",
+        avatarUrl: null,
+        address: "0x123",
+        accent: "blue",
+      },
+    ] as const
+  ).map(
+    (
+      baseArgs: Pick<WnftArgs, "theme" | "avatarUrl" | "address" | "accent">
+    ) => {
+      const args: WnftArgs = {
+        ...baseArgs,
+        title: wnftArgs.title,
+        displayName: wnftArgs.displayName,
+        featuredImageUrl: wnftArgs.featuredImageUrl,
+      };
+
+      const params = new URLSearchParams();
+      for (const [key, value] of Object.entries(args) as ObjectEntries<
+        typeof args
+      >) {
+        if (value !== null) {
+          params.set(key, value);
+        }
+      }
+
+      return `/api/wnft?${params.toString()}` as const;
+    }
   );
 
   return (
@@ -102,7 +63,7 @@ export default function Home() {
         gridAutoRows: "max-content",
       }}
     >
-      {wnftQuery.data?.map((dataUrl, i) => (
+      {imageUrls.map((imageUrl, i) => (
         <div
           key={i}
           style={{
@@ -118,7 +79,7 @@ export default function Home() {
               objectFit: "contain",
             }}
             alt=""
-            src={dataUrl}
+            src={imageUrl}
           />
         </div>
       ))}
