@@ -7,11 +7,13 @@ const wnfts: Record<string, WnftArgs> = {
   ["All the Ways We Are Together"]: {
     theme: "dark",
     title: "All the Ways We Are Together",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "Véronik",
     accent: "blue",
     address: "veronik.mirror.xyz",
-    avatarUrl: "/all-the-ways-we-are-together/avatar.png",
+    avatarUrl:
+      "https://mirror-media.imgix.net/publication-images/RHUAVNjkfMzHNBwUTnZm9.png?h=312&w=312",
   },
   ["Dark mode, no featured img"]: {
     theme: "dark",
@@ -20,7 +22,8 @@ const wnfts: Record<string, WnftArgs> = {
     displayName: "The Infinite Garden",
     accent: "blue",
     address: "ethereumfilm.mirror.xyz",
-    avatarUrl: "/infinite-garden/avatar.png",
+    avatarUrl:
+      "https://mirror-media.imgix.net/publication-images/d5282e4a-de40-4032-a896-cfa861944deb.jpg?h=1080&w=1080",
   },
   ["Light mode, no featured img"]: {
     theme: "light",
@@ -29,7 +32,8 @@ const wnfts: Record<string, WnftArgs> = {
     displayName: "The Infinite Garden",
     accent: "blue",
     address: "ethereumfilm.mirror.xyz",
-    avatarUrl: "/infinite-garden/avatar.png",
+    avatarUrl:
+      "https://mirror-media.imgix.net/publication-images/d5282e4a-de40-4032-a896-cfa861944deb.jpg?h=1080&w=1080",
   },
   ["center aaaaaaaa"]: {
     theme: "dark",
@@ -45,7 +49,8 @@ const wnfts: Record<string, WnftArgs> = {
     theme: "light",
     title:
       "aaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaasdfsdfaaaaaaaaaaadfaaaaaaaaaaasdfsdfaaaaaaaaaaa",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -55,7 +60,8 @@ const wnfts: Record<string, WnftArgs> = {
     theme: "light",
     title:
       "How To Build A Headless Brand: Architecting Chaos With A Really Long Title Just To see How It Is You Know?",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -122,7 +128,8 @@ const wnfts: Record<string, WnftArgs> = {
   ["left short no orphan 1"]: {
     theme: "dark",
     title: "|||||||||| abcdefghijkmn o",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -131,7 +138,8 @@ const wnfts: Record<string, WnftArgs> = {
   ["left short no orphan 2"]: {
     theme: "dark",
     title: "|||||||||| a bcdefghijkmno",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -140,7 +148,8 @@ const wnfts: Record<string, WnftArgs> = {
   ["left short forced orphan 1"]: {
     theme: "dark",
     title: "|||||||| abcdefghijkmno p",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -149,7 +158,8 @@ const wnfts: Record<string, WnftArgs> = {
   ["left short forced orphan 2"]: {
     theme: "dark",
     title: "|||||||| a bcdefghijkmnop",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -159,7 +169,8 @@ const wnfts: Record<string, WnftArgs> = {
     theme: "dark",
     title:
       "||||||||||||||||||||||||||||||||||||||||||||||||| abcdefghijklmno p",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -169,7 +180,8 @@ const wnfts: Record<string, WnftArgs> = {
     theme: "dark",
     title:
       "||||||||||||||||||||||||||||||||||||||||||||||||| a bcdefghijklmnop",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -179,7 +191,8 @@ const wnfts: Record<string, WnftArgs> = {
     theme: "dark",
     title:
       "|||||||||||||||||||||||||||||||||||||||||||||||| abcdefghijklmnop q",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -189,7 +202,8 @@ const wnfts: Record<string, WnftArgs> = {
     theme: "dark",
     title:
       "|||||||||||||||||||||||||||||||||||||||||||||||| a bcdefghijklmnopq",
-    featuredImageUrl: "/all-the-ways-we-are-together/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
     displayName: "abc",
     accent: "blue",
     address: "abc",
@@ -207,11 +221,13 @@ const wnfts: Record<string, WnftArgs> = {
   ["Ethereum: The Infinite Garden"]: {
     theme: "dark",
     title: "Ethereum: The Infinite Garden",
-    featuredImageUrl: "/infinite-garden/cover.png",
+    featuredImageUrl:
+      "https://mirror-media.imgix.net/nft/5bd7a9a2-e1d5-41c0-8fef-07fa846d6095.jpeg?h=null&w=null&auto=compress",
     displayName: "The Infinite Garden",
     accent: "blue",
     address: "ethereumfilm.mirror.xyz",
-    avatarUrl: "/infinite-garden/avatar.png",
+    avatarUrl:
+      "https://mirror-media.imgix.net/publication-images/d5282e4a-de40-4032-a896-cfa861944deb.jpg?h=1080&w=1080",
   },
   ["The Metaverse: 101"]: {
     theme: "light",
@@ -487,14 +503,15 @@ export default function Home() {
     <div
       style={{
         padding: 12,
-        gap: 12,
+        columnGap: 12,
+        rowGap: 32,
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill,minmax(auto,min(100%,400px)))",
         gridAutoRows: "max-content",
       }}
     >
-      {Object.entries(wnfts).map(([key, wnftArgs]) => {
-        return <Wnft key={key} {...wnftArgs} />;
+      {Object.entries(wnfts).map(([name, wnftArgs]) => {
+        return <Wnft key={name} {...wnftArgs} name={name} />;
       })}
     </div>
   );

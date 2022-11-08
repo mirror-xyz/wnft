@@ -11,9 +11,10 @@ import {
   SIZE,
   Theme,
   WnftArgs,
+  Accent,
 } from "./util.js";
 
-export type { WnftArgs };
+export type { WnftArgs, Accent };
 export async function getWnft(args: WnftArgs): Promise<Buffer> {
   const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
 
