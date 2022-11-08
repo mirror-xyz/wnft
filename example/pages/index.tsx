@@ -9,7 +9,8 @@ export default function Home() {
   >({
     title: "Hello world",
     displayName: "asdf",
-    featuredImageUrl: null,
+    featuredImageUrl:
+      "https://images.mirror-media.xyz/nft/4AD-F9a7HkR5e0JsRYuTC.jpg",
   });
 
   const imageUrls = (
@@ -116,11 +117,12 @@ export default function Home() {
 
       {imageUrls.map((imageUrl, i) => (
         <div
-          key={i}
+          key={`${imageUrl},${i}`}
           style={{
             aspectRatio: "1/1",
             width: "100%",
             display: "flex",
+            backgroundColor: "#c5c5c5",
           }}
         >
           <img

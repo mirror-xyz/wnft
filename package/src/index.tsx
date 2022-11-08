@@ -1,4 +1,5 @@
 import { Resvg } from "@resvg/resvg-js";
+import fetch from "node-fetch";
 import satori from "satori";
 
 import interRegular from "../inter/Inter-Regular.woff";
@@ -16,6 +17,26 @@ export type { WnftArgs };
 export async function getWnft(args: WnftArgs): Promise<Buffer> {
   const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
 
+  let checkedFeaturedImageUrl: string | null;
+  if (args.featuredImageUrl) {
+    try {
+      // check if valid URL
+      new URL(args.featuredImageUrl);
+
+      // check if valid image
+      const res = await fetch(args.featuredImageUrl);
+      if (!res.ok) {
+        throw new Error();
+      }
+
+      checkedFeaturedImageUrl = args.featuredImageUrl;
+    } catch (err) {
+      checkedFeaturedImageUrl = null;
+    }
+  } else {
+    checkedFeaturedImageUrl = null;
+  }
+
   const svgString = await satori(
     <div
       style={{
@@ -26,9 +47,28 @@ export async function getWnft(args: WnftArgs): Promise<Buffer> {
         flexDirection: "column",
       }}
     >
-      <div
-        style={{ width: SIZE, height: SIZE / 2, backgroundColor: "salmon" }}
-      />
+      {!!checkedFeaturedImageUrl && (
+        <div
+          style={{
+            width: SIZE,
+            height: SIZE / 2,
+            display: "flex",
+            position: "relative",
+          }}
+        >
+          <img
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+            }}
+            width={SIZE}
+            height={SIZE / 2}
+            src={checkedFeaturedImageUrl}
+          />
+        </div>
+      )}
 
       <span
         style={{
