@@ -51,7 +51,7 @@ export default function Home() {
     }
   );
 
-  console.log("force build");
+  console.log("force build!");
 
   return (
     <div
