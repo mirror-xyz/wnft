@@ -122,3 +122,40 @@ export const darkTheme: Theme = {
 };
 
 export const SIZE = 2048;
+
+export function getTitleSize(args: {
+  titleLength: number;
+  hasFeaturedImage: boolean;
+}): 56 | 163 | 72 {
+  if (args.hasFeaturedImage) {
+    return args.titleLength > 40 ? 56 : 163;
+  } else {
+    return 72;
+  }
+}
+
+export async function getCheckedImageUrl(
+  imageUrl: string | null
+): Promise<string | null> {
+  let checkedImageUrl: string | null;
+  if (imageUrl) {
+    try {
+      // check if valid URL
+      new URL(imageUrl);
+
+      // check if valid image
+      const res = await fetch(imageUrl);
+      if (!res.ok) {
+        throw new Error();
+      }
+
+      checkedImageUrl = imageUrl;
+    } catch (err) {
+      checkedImageUrl = null;
+    }
+  } else {
+    checkedImageUrl = null;
+  }
+
+  return checkedImageUrl;
+}

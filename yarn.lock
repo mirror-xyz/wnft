@@ -3538,9 +3538,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"satori@npm:^0.0.43":
-  version: 0.0.43
-  resolution: "satori@npm:0.0.43"
+"satori@npm:^0.0.44":
+  version: 0.0.44
+  resolution: "satori@npm:0.0.44"
   dependencies:
     "@shuding/opentype.js": 1.4.0-beta.0
     css-background-parser: ^0.1.0
@@ -3549,7 +3549,7 @@ __metadata:
     emoji-regex: ^10.2.1
     postcss-value-parser: ^4.2.0
     yoga-layout-prebuilt: ^1.10.0
-  checksum: 1bfaf87de5388954b27e2edb470966174972c6bc2212d2cdc01c4129e73fefae8cbd2c77bef7f2472c55875cedad0003984e0966b91d0fad9fe16571a5c3bf48
+  checksum: a6087d9c615d1239c7d0864bac61c21b5fab7c78260127e72de60368d26aaaff7aeb90a7c6f8a632eabc43f05668e28ba19345ceff82d534b7a94b309876315d
   languageName: node
   linkType: hard
 
@@ -4149,7 +4149,7 @@ __metadata:
     node-fetch: ^3.2.10
     prettier: ^2.7.1
     react: ^18.2.0
-    satori: ^0.0.43
+    satori: ^0.0.44
     tsup: ^6.4.0
     typescript: ^4.8.4
   languageName: unknown

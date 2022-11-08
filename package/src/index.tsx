@@ -12,31 +12,22 @@ import {
   Theme,
   WnftArgs,
   Accent,
+  getCheckedImageUrl,
+  getTitleSize,
 } from "./util.js";
 
 export type { WnftArgs, Accent };
 export async function getWnft(args: WnftArgs): Promise<Buffer> {
   const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
 
-  let checkedFeaturedImageUrl: string | null;
-  if (args.featuredImageUrl) {
-    try {
-      // check if valid URL
-      new URL(args.featuredImageUrl);
+  const checkedFeaturedImageUrl = await getCheckedImageUrl(
+    args.featuredImageUrl
+  );
 
-      // check if valid image
-      const res = await fetch(args.featuredImageUrl);
-      if (!res.ok) {
-        throw new Error();
-      }
-
-      checkedFeaturedImageUrl = args.featuredImageUrl;
-    } catch (err) {
-      checkedFeaturedImageUrl = null;
-    }
-  } else {
-    checkedFeaturedImageUrl = null;
-  }
+  const titleSize = getTitleSize({
+    hasFeaturedImage: !!checkedFeaturedImageUrl,
+    titleLength: args.title.length,
+  });
 
   const svgString = await satori(
     <div
@@ -48,41 +39,50 @@ export async function getWnft(args: WnftArgs): Promise<Buffer> {
         flexDirection: "column",
       }}
     >
-      {!!checkedFeaturedImageUrl && (
-        <div
-          style={{
-            width: SIZE,
-            height: SIZE / 2,
-            display: "flex",
-            position: "relative",
-          }}
-        >
-          <img
+      {checkedFeaturedImageUrl ? (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              position: "absolute",
+              width: SIZE,
+              height: SIZE / 2,
+              display: "flex",
+              position: "relative",
             }}
-            width={SIZE}
-            height={SIZE / 2}
-            src={checkedFeaturedImageUrl}
-          />
+          >
+            <img
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                position: "absolute",
+              }}
+              width={SIZE}
+              height={SIZE / 2}
+              src={checkedFeaturedImageUrl}
+            />
+          </div>
+
+          <span
+            style={{
+              fontFamily: "Inter",
+              fontWeight: fontWeight.semiBold,
+              color: theme.foreground,
+              fontSize: titleSize,
+              display: "flex",
+              paddingTop: 87,
+              paddingLeft: 103,
+              paddingRight: 103,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {args.title}
+          </span>
         </div>
+      ) : (
+        <></>
       )}
 
-      <span
-        style={{
-          fontFamily: "Inter",
-          fontWeight: fontWeight.semiBold,
-          color: theme.foreground,
-          fontSize: 300,
-        }}
-      >
-        {args.title}
-      </span>
-
-      <span
+      {/* <span
         style={{
           fontFamily: "Inter",
           fontWeight: fontWeight.regular,
@@ -91,7 +91,7 @@ export async function getWnft(args: WnftArgs): Promise<Buffer> {
         }}
       >
         {args.address}
-      </span>
+      </span> */}
     </div>,
     {
       width: SIZE,

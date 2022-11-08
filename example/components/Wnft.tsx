@@ -47,8 +47,8 @@ export function Wnft(props: WnftArgs & { name: string }) {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 2,
-        fontSize: 14,
+        gap: 6,
+        fontSize: 13,
         fontFamily: "sans-serif",
       }}
     >
@@ -102,11 +102,12 @@ export function Wnft(props: WnftArgs & { name: string }) {
                 key={arg}
                 style={{
                   display: "flex",
-                  flexDirection: "column",
-                  gap: 2,
+                  flexDirection: "row",
+                  gap: 6,
+                  alignItems: "center",
                 }}
               >
-                <span style={{ paddingLeft: 4 }}>{arg}</span>
+                <span>{arg}</span>
                 <input
                   type="text"
                   value={wnftArgs[arg] ?? ""}
@@ -129,6 +130,7 @@ export function Wnft(props: WnftArgs & { name: string }) {
                     borderRadius: 4,
                     borderColor: "white",
                     backgroundColor: "white",
+                    flexGrow: 1,
                   }}
                 />
               </label>
@@ -172,7 +174,7 @@ export function Wnft(props: WnftArgs & { name: string }) {
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  gap: 6,
+                  columnGap: 6,
                   flexWrap: "wrap",
                 }}
               >

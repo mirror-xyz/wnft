@@ -21,7 +21,7 @@
     "@resvg/resvg-js": "^2.1.0",
     "node-fetch": "^3.2.10",
     "react": "^18.2.0",
-    "satori": "^0.0.43"
+    "satori": "^0.0.44"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.42.0",
