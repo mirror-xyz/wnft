@@ -40,10 +40,11 @@ export default async function wnftApi(
       accent: parse.data.accent,
     };
 
-    const wnft = await getWnft(args);
+    const wnft = await getWnft(args, { size: 1000 });
+    const cacheTime = 31 * 24 * 60 * 60; // 31 days is the max cache time https://vercel.com/docs/concepts/edge-network/caching
     res.setHeader(
       "Cache-Control",
-      "public, immutable, no-transform, max-age=31536000"
+      `public, s-maxage=${cacheTime}, stale-while-revalidate=${cacheTime}, must-revalidate, max-age=0`
     );
     res.setHeader("Content-Type", "image/png");
     res.status(200).write(wnft);

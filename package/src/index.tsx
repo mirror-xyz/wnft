@@ -17,7 +17,10 @@ import {
 } from "./util.js";
 
 export type { WnftArgs, Accent };
-export async function getWnft(args: WnftArgs): Promise<Buffer> {
+export async function getWnft(
+  args: WnftArgs,
+  options?: { size?: number }
+): Promise<Buffer> {
   const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
 
   const checkedFeaturedImageUrl = await getCheckedImageUrl(
@@ -116,7 +119,7 @@ export async function getWnft(args: WnftArgs): Promise<Buffer> {
   const resvg = new Resvg(svgString, {
     fitTo: {
       mode: "width",
-      value: SIZE,
+      value: options?.size ?? SIZE,
     },
     font: {
       loadSystemFonts: false,
