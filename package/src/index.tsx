@@ -1,11 +1,11 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
 
+import interRegular from "../inter/Inter-Regular.woff";
+import interSemiBold from "../inter/Inter-SemiBold.woff";
 import {
   darkTheme,
   fontWeight,
-  interRegularBuffer,
-  interSemiBoldBuffer,
   lightTheme,
   SIZE,
   Theme,
@@ -58,13 +58,13 @@ export async function getWnft(args: WnftArgs): Promise<Buffer> {
       fonts: [
         {
           name: "Inter",
-          data: interRegularBuffer,
+          data: interRegular,
           weight: 400,
           style: "normal",
         },
         {
           name: "Inter",
-          data: interSemiBoldBuffer,
+          data: interSemiBold,
           weight: 600,
           style: "normal",
         },

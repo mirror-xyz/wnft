@@ -1,7 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-import url from "node:url";
-
 export type Accent =
   | "blue"
   | "green"
@@ -126,14 +122,3 @@ export const darkTheme: Theme = {
 };
 
 export const SIZE = 2048;
-
-const interPath = path.resolve(
-  path.dirname(url.fileURLToPath(import.meta.url)),
-  "../inter"
-);
-
-const interRegularPath = path.resolve(interPath, "Inter-Regular.woff");
-export const interRegularBuffer = fs.readFileSync(interRegularPath);
-
-const interSemiBoldPath = path.resolve(interPath, "Inter-SemiBold.woff");
-export const interSemiBoldBuffer = fs.readFileSync(interSemiBoldPath);

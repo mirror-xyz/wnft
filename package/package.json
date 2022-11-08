@@ -1,9 +1,13 @@
 {
   "name": "wnft",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "exports": {
     ".": "./dist/index.js"
+  },
+  "scripts": {
+    "prepack": "yarn build",
+    "build": "yarn tsc && yarn tsup"
   },
   "packageManager": "yarn@3.2.4",
   "repository": {
@@ -25,6 +29,7 @@
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1",
+    "tsup": "^6.4.0",
     "typescript": "^4.8.4"
   }
 }
