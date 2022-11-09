@@ -1,12 +1,6 @@
 {
   "name": "wnft",
-  "version": "0.0.8",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
+  "version": "0.0.9",
   "files": [
     "dist/**/*"
   ],

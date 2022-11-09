@@ -5,7 +5,7 @@ export default defineConfig({
   sourcemap: true,
   dts: true,
   clean: true,
-  format: ["esm", "cjs"],
+  format: ["cjs"],
   loader: {
     ".woff": "binary",
   },
