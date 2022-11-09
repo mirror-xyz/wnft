@@ -82,7 +82,27 @@ export async function getWnft(
           </span>
         </div>
       ) : (
-        <></>
+        <div
+          style={{
+            display: "flex",
+            flexGrow: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            width: SIZE,
+            fontFamily: "Inter",
+            fontWeight: fontWeight.semiBold,
+            color: theme[args.accent],
+            fontSize: titleSize,
+            paddingLeft: 108,
+            paddingRight: 108,
+            wordBreak: "normal",
+            overflowWrap: "anywhere",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {args.title}
+        </div>
       )}
 
       {/* <span

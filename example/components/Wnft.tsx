@@ -140,6 +140,7 @@ export function Wnft(props: WnftArgs & { name: string }) {
           case "theme": {
             inputJsx = (
               <div
+                key={arg}
                 style={{
                   display: "flex",
                   flexDirection: "row",
@@ -171,6 +172,7 @@ export function Wnft(props: WnftArgs & { name: string }) {
           case "accent": {
             inputJsx = (
               <div
+                key={arg}
                 style={{
                   display: "flex",
                   flexDirection: "row",

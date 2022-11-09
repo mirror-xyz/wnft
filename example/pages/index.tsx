@@ -35,27 +35,27 @@ const wnfts: Record<string, WnftArgs> = {
     avatarUrl:
       "https://mirror-media.imgix.net/publication-images/d5282e4a-de40-4032-a896-cfa861944deb.jpg?h=1080&w=1080",
   },
-  ["center aaaaaaaa"]: {
-    theme: "dark",
-    title:
-      "aaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    featuredImageUrl: null,
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left aaaaaaaa"]: {
-    theme: "light",
-    title:
-      "aaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaasdfsdfaaaaaaaaaaadfaaaaaaaaaaasdfsdfaaaaaaaaaaa",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
+  // ["center aaaaaaaa"]: {
+  //   theme: "dark",
+  //   title:
+  //     "aaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  //   featuredImageUrl: null,
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left aaaaaaaa"]: {
+  //   theme: "light",
+  //   title:
+  //     "aaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfaaaaaaaaaaasdfsdfaaaaaaaaaaadfaaaaaaaaaaasdfsdfaaaaaaaaaaa",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
   ["left long"]: {
     theme: "light",
     title:
@@ -107,108 +107,108 @@ const wnfts: Record<string, WnftArgs> = {
     address: "abc",
     avatarUrl: null,
   },
-  ["center no orphan"]: {
-    theme: "dark",
-    title: "||||||||| abcdefghijkl m",
-    featuredImageUrl: null,
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["center force orphan"]: {
-    theme: "dark",
-    title: "||||||| abcdefghijklm n",
-    featuredImageUrl: null,
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left short no orphan 1"]: {
-    theme: "dark",
-    title: "|||||||||| abcdefghijkmn o",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left short no orphan 2"]: {
-    theme: "dark",
-    title: "|||||||||| a bcdefghijkmno",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left short forced orphan 1"]: {
-    theme: "dark",
-    title: "|||||||| abcdefghijkmno p",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left short forced orphan 2"]: {
-    theme: "dark",
-    title: "|||||||| a bcdefghijkmnop",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left long no orphan 1"]: {
-    theme: "dark",
-    title:
-      "||||||||||||||||||||||||||||||||||||||||||||||||| abcdefghijklmno p",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left long no orphan 2"]: {
-    theme: "dark",
-    title:
-      "||||||||||||||||||||||||||||||||||||||||||||||||| a bcdefghijklmnop",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left long forced orphan 1"]: {
-    theme: "dark",
-    title:
-      "|||||||||||||||||||||||||||||||||||||||||||||||| abcdefghijklmnop q",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
-  ["left long forced orphan 2"]: {
-    theme: "dark",
-    title:
-      "|||||||||||||||||||||||||||||||||||||||||||||||| a bcdefghijklmnopq",
-    featuredImageUrl:
-      "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
-    displayName: "abc",
-    accent: "blue",
-    address: "abc",
-    avatarUrl: null,
-  },
+  // ["center no orphan"]: {
+  //   theme: "dark",
+  //   title: "||||||||| abcdefghijkl m",
+  //   featuredImageUrl: null,
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["center force orphan"]: {
+  //   theme: "dark",
+  //   title: "||||||| abcdefghijklm n",
+  //   featuredImageUrl: null,
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left short no orphan 1"]: {
+  //   theme: "dark",
+  //   title: "|||||||||| abcdefghijkmn o",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left short no orphan 2"]: {
+  //   theme: "dark",
+  //   title: "|||||||||| a bcdefghijkmno",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left short forced orphan 1"]: {
+  //   theme: "dark",
+  //   title: "|||||||| abcdefghijkmno p",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left short forced orphan 2"]: {
+  //   theme: "dark",
+  //   title: "|||||||| a bcdefghijkmnop",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left long no orphan 1"]: {
+  //   theme: "dark",
+  //   title:
+  //     "||||||||||||||||||||||||||||||||||||||||||||||||| abcdefghijklmno p",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left long no orphan 2"]: {
+  //   theme: "dark",
+  //   title:
+  //     "||||||||||||||||||||||||||||||||||||||||||||||||| a bcdefghijklmnop",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left long forced orphan 1"]: {
+  //   theme: "dark",
+  //   title:
+  //     "|||||||||||||||||||||||||||||||||||||||||||||||| abcdefghijklmnop q",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
+  // ["left long forced orphan 2"]: {
+  //   theme: "dark",
+  //   title:
+  //     "|||||||||||||||||||||||||||||||||||||||||||||||| a bcdefghijklmnopq",
+  //   featuredImageUrl:
+  //     "https://mirror-media.imgix.net/publication-images/7dRsCOHMEJnhY1l27b4uV.png?height=1600&width=3200&h=1600&w=3200&auto=compress",
+  //   displayName: "abc",
+  //   accent: "blue",
+  //   address: "abc",
+  //   avatarUrl: null,
+  // },
   ["invalid avatar image"]: {
     theme: "dark",
     title: "abc",
@@ -496,7 +496,7 @@ const wnfts: Record<string, WnftArgs> = {
     avatarUrl:
       "https://mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2Fhb68H793Zqj8YleyB7rqt.png%3Fheight%3D1000%26width%3D1000&w=828&q=100",
   },
-} as const;
+};
 
 export default function Home() {
   return (

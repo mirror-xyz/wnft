@@ -126,11 +126,11 @@ export const SIZE = 2048;
 export function getTitleSize(args: {
   titleLength: number;
   hasFeaturedImage: boolean;
-}): 56 | 163 | 72 {
+}): 56 | 163 | 180 {
   if (args.hasFeaturedImage) {
     return args.titleLength > 40 ? 56 : 163;
   } else {
-    return 72;
+    return 180;
   }
 }
 
