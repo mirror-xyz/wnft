@@ -154,7 +154,13 @@ export async function getCheckedImageUrl(
         throw new Error();
       }
 
-      checkedImageUrl = imageUrl;
+      const buffer = Buffer.from(await res.arrayBuffer());
+
+      const base64Image = `data:${res.headers.get(
+        "content-type"
+      )};base64,${buffer.toString("base64")}`;
+
+      checkedImageUrl = base64Image;
     } catch (err) {
       checkedImageUrl = null;
     }
