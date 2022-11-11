@@ -126,6 +126,7 @@ export const darkTheme: ThemeStyles = {
 
 export const wnftSize = 2048;
 export const avatarSize = 208;
+export const footerGradientHeight = 150;
 
 export function getTitleSize(args: {
   titleLength: number;

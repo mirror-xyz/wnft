@@ -15,6 +15,7 @@ import {
   getCheckedImageUrl,
   getTitleSize,
   avatarSize,
+  footerGradientHeight,
 } from "./util.js";
 
 export type { WnftArgs, Accent };
@@ -139,8 +140,8 @@ export async function getWnft(
             position: "absolute",
             left: 0,
             right: 0,
-            top: -150 + 2,
-            height: 150,
+            top: -footerGradientHeight + 2, // Need a little offset to stop clipping
+            height: footerGradientHeight,
             backgroundImage: `linear-gradient(0deg, ${themeStyles.background}, ${themeStyles.backgroundNoOpacity})`,
           }}
         />
