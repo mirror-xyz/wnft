@@ -9,7 +9,7 @@ import {
   fontWeight,
   lightTheme,
   wnftSize,
-  Theme,
+  ThemeStyles,
   WnftArgs,
   Accent,
   getCheckedImageUrl,
@@ -19,25 +19,33 @@ import {
 
 export type { WnftArgs, Accent };
 export async function getWnft(
-  args: WnftArgs,
+  {
+    title,
+    accent,
+    theme,
+    address,
+    displayName,
+    featuredImageUrl: uncheckedFeaturedImageUrl,
+    avatarUrl: uncheckedAvatarUrl,
+  }: WnftArgs,
   options?: { size?: number }
 ): Promise<Buffer> {
-  const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
+  const themeStyles: ThemeStyles = theme === "light" ? lightTheme : darkTheme;
 
-  const [checkedFeaturedImageUrl, checkedAvatarUrl] = await Promise.all([
-    getCheckedImageUrl(args.featuredImageUrl),
-    getCheckedImageUrl(args.avatarUrl),
+  const [featuredImageUrl, avatarUrl] = await Promise.all([
+    getCheckedImageUrl(uncheckedFeaturedImageUrl),
+    getCheckedImageUrl(uncheckedAvatarUrl),
   ]);
 
   const titleSize = getTitleSize({
-    hasFeaturedImage: !!checkedFeaturedImageUrl,
-    titleLength: args.title.length,
+    hasFeaturedImage: !!featuredImageUrl,
+    titleLength: title.length,
   });
 
   const svgString = await satori(
     <div
       style={{
-        backgroundColor: theme.background,
+        backgroundColor: themeStyles.background,
         width: wnftSize,
         height: wnftSize,
         display: "flex",
@@ -45,7 +53,7 @@ export async function getWnft(
         position: "relative",
       }}
     >
-      {checkedFeaturedImageUrl ? (
+      {featuredImageUrl ? (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
@@ -64,7 +72,7 @@ export async function getWnft(
               }}
               width={wnftSize}
               height={wnftSize / 2}
-              src={checkedFeaturedImageUrl}
+              src={featuredImageUrl}
             />
           </div>
 
@@ -72,7 +80,7 @@ export async function getWnft(
             style={{
               fontFamily: "Inter",
               fontWeight: fontWeight.semiBold,
-              color: theme.foreground,
+              color: themeStyles.foreground,
               fontSize: titleSize,
               lineHeight: 1.13,
               display: "flex",
@@ -82,7 +90,7 @@ export async function getWnft(
               letterSpacing: "-0.02em",
             }}
           >
-            {args.title}
+            {title}
           </span>
         </div>
       ) : (
@@ -103,13 +111,13 @@ export async function getWnft(
               paddingBottom: 128,
               fontFamily: "Inter",
               fontWeight: fontWeight.semiBold,
-              color: theme[args.accent],
+              color: themeStyles[accent],
               fontSize: titleSize,
               letterSpacing: "-0.02em",
               lineHeight: 1.21,
             }}
           >
-            {args.title}
+            {title}
           </span>
         </div>
       )}
@@ -120,7 +128,7 @@ export async function getWnft(
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: theme.background,
+          backgroundColor: themeStyles.background,
           display: "flex",
           paddingBottom: 112,
           paddingLeft: 112,
@@ -128,14 +136,24 @@ export async function getWnft(
       >
         <div
           style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: -150 + 2,
+            height: 150,
+            backgroundImage: `linear-gradient(0deg, ${themeStyles.background}, ${themeStyles.backgroundNoOpacity})`,
+          }}
+        />
+
+        <div
+          style={{
             width: avatarSize,
             height: avatarSize,
             position: "relative",
             display: "flex",
-            overflow: "hidden",
           }}
         >
-          {checkedAvatarUrl ? (
+          {avatarUrl ? (
             <img
               style={{
                 top: 0,
@@ -148,14 +166,14 @@ export async function getWnft(
                 display: "flex",
                 borderWidth: 4,
                 borderColor:
-                  args.theme === "light"
-                    ? theme.foregroundSecondary
-                    : theme.foregroundTertiary,
+                  theme === "light"
+                    ? themeStyles.foregroundSecondary
+                    : themeStyles.foregroundTertiary,
                 borderStyle: "solid",
               }}
               width={avatarSize}
               height={avatarSize}
-              src={checkedAvatarUrl}
+              src={avatarUrl}
             />
           ) : (
             <div
@@ -165,27 +183,10 @@ export async function getWnft(
                 width: "100%",
                 height: "100%",
                 borderRadius: avatarSize,
-                backgroundColor: "green",
+                backgroundColor: themeStyles[accent],
               }}
             />
           )}
-
-          {/* {!!checkedAvatarUrl && (
-            <div
-              style={{
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                borderRadius: avatarSize,
-                position: "absolute",
-                display: "flex",
-                borderWidth: 10,
-                borderColor: "salmon",
-                borderStyle: "solid",
-              }}
-            />
-          )} */}
         </div>
 
         <div
@@ -200,12 +201,12 @@ export async function getWnft(
               fontFamily: "Inter",
               fontWeight: fontWeight.semiBold,
               fontSize: 75,
-              color: theme.foreground,
+              color: themeStyles.foreground,
               letterSpacing: "-0.02em",
               paddingTop: 19,
             }}
           >
-            {args.displayName}
+            {displayName}
           </span>
 
           <span
@@ -214,11 +215,11 @@ export async function getWnft(
               fontWeight: fontWeight.regular,
               fontSize: 61,
               letterSpacing: "-0.013em",
-              color: theme.textTertiary,
+              color: themeStyles.textTertiary,
               paddingTop: 4,
             }}
           >
-            {args.address}
+            {address}
           </span>
         </div>
       </div>

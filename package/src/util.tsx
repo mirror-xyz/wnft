@@ -20,8 +20,9 @@ export type WnftArgs = {
   accent: Accent;
 };
 
-export type Theme = {
+export type ThemeStyles = {
   background: string;
+  backgroundNoOpacity: string;
   foreground: string;
   foregroundSecondary: string;
   foregroundTertiary: string;
@@ -35,8 +36,9 @@ export const fontWeight = {
   semiBold: 600,
 } as const;
 
-export const lightTheme: Theme = {
+export const lightTheme: ThemeStyles = {
   background: "#ffffff",
+  backgroundNoOpacity: "rgba(255, 255, 255, 0)",
   foreground: "#333333",
   foregroundSecondary: "#ECECEC",
   foregroundTertiary: "#ECECEC",
@@ -78,8 +80,9 @@ export const lightTheme: Theme = {
   },
 };
 
-export const darkTheme: Theme = {
+export const darkTheme: ThemeStyles = {
   background: "#141414",
+  backgroundNoOpacity: "rgba(20, 20, 20, 0)",
   foreground: "#ffffff",
   foregroundSecondary: "#1d1d1d",
   foregroundTertiary: "#1d1d1d",
