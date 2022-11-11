@@ -8,5 +8,6 @@ export default defineConfig({
   format: ["cjs"],
   loader: {
     ".woff": "binary",
+    ".ttf": "binary",
   },
 });

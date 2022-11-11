@@ -231,13 +231,13 @@ export async function getWnft(
         {
           name: "Inter",
           data: interRegular,
-          weight: 400,
+          weight: fontWeight.regular,
           style: "normal",
         },
         {
           name: "Inter",
           data: interSemiBold,
-          weight: 600,
+          weight: fontWeight.semiBold,
           style: "normal",
         },
       ],
