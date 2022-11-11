@@ -40,7 +40,7 @@ export default async function wnftApi(
       accent: parse.data.accent,
     };
 
-    const wnft = await getWnft(args, { size: 1000 });
+    const wnft = await getWnft(args, { size: 1200 });
     const cacheTime = 31 * 24 * 60 * 60; // 31 days is the max cache time https://vercel.com/docs/concepts/edge-network/caching
     res.setHeader(
       "Cache-Control",

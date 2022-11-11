@@ -121,14 +121,15 @@ export const darkTheme: Theme = {
   },
 };
 
-export const SIZE = 2048;
+export const wnftSize = 2048;
+export const avatarSize = 208;
 
 export function getTitleSize(args: {
   titleLength: number;
   hasFeaturedImage: boolean;
-}): 56 | 163 | 180 {
+}): 143 | 163 | 180 {
   if (args.hasFeaturedImage) {
-    return args.titleLength > 40 ? 56 : 163;
+    return args.titleLength > 40 ? 143 : 163;
   } else {
     return 180;
   }

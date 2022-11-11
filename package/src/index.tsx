@@ -8,12 +8,13 @@ import {
   darkTheme,
   fontWeight,
   lightTheme,
-  SIZE,
+  wnftSize,
   Theme,
   WnftArgs,
   Accent,
   getCheckedImageUrl,
   getTitleSize,
+  avatarSize,
 } from "./util.js";
 
 export type { WnftArgs, Accent };
@@ -23,9 +24,10 @@ export async function getWnft(
 ): Promise<Buffer> {
   const theme: Theme = args.theme === "light" ? lightTheme : darkTheme;
 
-  const checkedFeaturedImageUrl = await getCheckedImageUrl(
-    args.featuredImageUrl
-  );
+  const [checkedFeaturedImageUrl, checkedAvatarUrl] = await Promise.all([
+    getCheckedImageUrl(args.featuredImageUrl),
+    getCheckedImageUrl(args.avatarUrl),
+  ]);
 
   const titleSize = getTitleSize({
     hasFeaturedImage: !!checkedFeaturedImageUrl,
@@ -36,18 +38,19 @@ export async function getWnft(
     <div
       style={{
         backgroundColor: theme.background,
-        width: SIZE,
-        height: SIZE,
+        width: wnftSize,
+        height: wnftSize,
         display: "flex",
         flexDirection: "column",
+        position: "relative",
       }}
     >
       {checkedFeaturedImageUrl ? (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              width: SIZE,
-              height: SIZE / 2,
+              width: wnftSize,
+              height: wnftSize / 2,
               display: "flex",
               position: "relative",
             }}
@@ -59,8 +62,8 @@ export async function getWnft(
                 objectFit: "cover",
                 position: "absolute",
               }}
-              width={SIZE}
-              height={SIZE / 2}
+              width={wnftSize}
+              height={wnftSize / 2}
               src={checkedFeaturedImageUrl}
             />
           </div>
@@ -71,8 +74,9 @@ export async function getWnft(
               fontWeight: fontWeight.semiBold,
               color: theme.foreground,
               fontSize: titleSize,
+              lineHeight: 1.13,
               display: "flex",
-              paddingTop: 87,
+              paddingTop: 90,
               paddingLeft: 103,
               paddingRight: 103,
               letterSpacing: "-0.02em",
@@ -89,7 +93,7 @@ export async function getWnft(
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            width: SIZE,
+            width: wnftSize,
             fontFamily: "Inter",
             fontWeight: fontWeight.semiBold,
             color: theme[args.accent],
@@ -105,20 +109,82 @@ export async function getWnft(
         </div>
       )}
 
-      {/* <span
+      <div
         style={{
-          fontFamily: "Inter",
-          fontWeight: fontWeight.regular,
-          color: theme.foreground,
-          fontSize: 300,
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: theme.background,
+          display: "flex",
+          paddingBottom: 112,
+          paddingLeft: 112,
         }}
       >
-        {args.address}
-      </span> */}
+        <div
+          style={{
+            width: avatarSize,
+            height: avatarSize,
+            borderRadius: avatarSize,
+            backgroundColor: "blue",
+            position: "relative",
+            display: "flex",
+            overflow: "hidden",
+          }}
+        >
+          {!!checkedAvatarUrl && (
+            <img
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                position: "absolute",
+              }}
+              width={avatarSize}
+              height={avatarSize}
+              src={checkedAvatarUrl}
+            />
+          )}
+        </div>
+
+        <div
+          style={{
+            paddingLeft: 52,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "Inter",
+              fontWeight: fontWeight.semiBold,
+              fontSize: 75,
+              color: theme.foreground,
+              letterSpacing: "-0.02em",
+              paddingTop: 19,
+            }}
+          >
+            {args.displayName}
+          </span>
+
+          <span
+            style={{
+              fontFamily: "Inter",
+              fontWeight: fontWeight.regular,
+              fontSize: 61,
+              letterSpacing: "-0.013em",
+              color: theme.textTertiary,
+              paddingTop: 4,
+            }}
+          >
+            {args.address}
+          </span>
+        </div>
+      </div>
     </div>,
     {
-      width: SIZE,
-      height: SIZE,
+      width: wnftSize,
+      height: wnftSize,
       fonts: [
         {
           name: "Inter",
@@ -139,7 +205,7 @@ export async function getWnft(
   const resvg = new Resvg(svgString, {
     fitTo: {
       mode: "width",
-      value: options?.size ?? SIZE,
+      value: options?.size ?? wnftSize,
     },
     font: {
       loadSystemFonts: false,
