@@ -94,18 +94,23 @@ export async function getWnft(
             justifyContent: "center",
             textAlign: "center",
             width: wnftSize,
-            fontFamily: "Inter",
-            fontWeight: fontWeight.semiBold,
-            color: theme[args.accent],
-            fontSize: titleSize,
             paddingLeft: 108,
             paddingRight: 108,
-            wordBreak: "normal",
-            overflowWrap: "anywhere",
-            letterSpacing: "-0.02em",
           }}
         >
-          {args.title}
+          <span
+            style={{
+              paddingBottom: 128,
+              fontFamily: "Inter",
+              fontWeight: fontWeight.semiBold,
+              color: theme[args.accent],
+              fontSize: titleSize,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.21,
+            }}
+          >
+            {args.title}
+          </span>
         </div>
       )}
 
@@ -125,26 +130,62 @@ export async function getWnft(
           style={{
             width: avatarSize,
             height: avatarSize,
-            borderRadius: avatarSize,
-            backgroundColor: "blue",
             position: "relative",
             display: "flex",
             overflow: "hidden",
           }}
         >
-          {!!checkedAvatarUrl && (
+          {checkedAvatarUrl ? (
             <img
               style={{
+                top: 0,
+                left: 0,
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
                 position: "absolute",
+                borderRadius: avatarSize,
+                display: "flex",
+                borderWidth: 4,
+                borderColor:
+                  args.theme === "light"
+                    ? theme.foregroundSecondary
+                    : theme.foregroundTertiary,
+                borderStyle: "solid",
               }}
               width={avatarSize}
               height={avatarSize}
               src={checkedAvatarUrl}
             />
+          ) : (
+            <div
+              style={{
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: avatarSize,
+                backgroundColor: "green",
+              }}
+            />
           )}
+
+          {/* {!!checkedAvatarUrl && (
+            <div
+              style={{
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: avatarSize,
+                position: "absolute",
+                display: "flex",
+                borderWidth: 10,
+                borderColor: "salmon",
+                borderStyle: "solid",
+              }}
+            />
+          )} */}
         </div>
 
         <div

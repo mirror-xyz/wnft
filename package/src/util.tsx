@@ -127,11 +127,11 @@ export const avatarSize = 208;
 export function getTitleSize(args: {
   titleLength: number;
   hasFeaturedImage: boolean;
-}): 143 | 163 | 180 {
+}): 143 | 163 | 184 {
   if (args.hasFeaturedImage) {
     return args.titleLength > 40 ? 143 : 163;
   } else {
-    return 180;
+    return 184;
   }
 }
 
