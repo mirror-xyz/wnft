@@ -1,9 +1,8 @@
 import { Resvg } from "@resvg/resvg-js";
-import fetch from "node-fetch";
 import satori from "satori";
 
-import interRegular from "../inter/Inter-Regular.woff";
-import interSemiBold from "../inter/Inter-SemiBold.woff";
+import interRegular from "../font/Inter-Regular.woff";
+import interSemiBold from "../font/Inter-SemiBold.woff";
 import {
   darkTheme,
   fontWeight,
