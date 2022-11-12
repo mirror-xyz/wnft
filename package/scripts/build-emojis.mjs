@@ -1,7 +1,12 @@
 /* eslint-env node */
+import assert from "node:assert";
 import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
+
+import emojis from "emojibase-data/en/data.json" assert { type: "json" };
+import prettier from "prettier";
+import twemoji from "twemoji";
 
 const rootDir = path.resolve(
   path.dirname(url.fileURLToPath(import.meta.url)),
@@ -10,26 +15,34 @@ const rootDir = path.resolve(
 
 const twemojiDir = path.resolve(rootDir, "twemoji-14.0.2");
 
-const svgFiles = fs
-  .readdirSync(twemojiDir)
-  .filter((f) => path.extname(f) === ".svg");
+const graphemeImagesPath = path.resolve(rootDir, "src", "graphemeImages.json");
 
 const json = {};
 
-for (const svgFile of svgFiles) {
-  const svgData = fs.readFileSync(path.resolve(twemojiDir, svgFile));
-  const svgDataUrl = `data:image/svg+xml;base64,${svgData.toString("base64")}`;
+for (const emoji of emojis) {
+  twemoji.parse(emoji.emoji, {
+    callback(iconId) {
+      if (iconId) {
+        const svgData = fs.readFileSync(
+          path.resolve(twemojiDir, `${iconId}.svg`),
+          "base64"
+        );
 
-  const grapheme = String.fromCodePoint(
-    ...svgFile.split("-").map((code) => {
-      return parseInt(code, 16);
-    })
-  );
+        const svgDataUrl = `data:image/svg+xml;base64,${svgData}`;
 
-  json[grapheme] = svgDataUrl;
+        json[emoji.emoji] = svgDataUrl;
+      }
+    },
+  });
 }
 
+const prettierOptions = await prettier.resolveConfig(graphemeImagesPath);
+assert(prettierOptions);
+
 fs.writeFileSync(
-  path.resolve(rootDir, "src", "graphemeImages.json"),
-  JSON.stringify(json)
+  graphemeImagesPath,
+  prettier.format(JSON.stringify(json), {
+    ...prettierOptions,
+    filepath: graphemeImagesPath,
+  })
 );

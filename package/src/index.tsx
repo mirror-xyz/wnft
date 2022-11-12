@@ -242,10 +242,10 @@ export async function getWnft(
           weight: fontWeight.semiBold,
           style: "normal",
         },
-        // {
-        //   name: "Noto Sans Symbols 2",
-        //   data: notoSansSymbols2,
-        // },
+        {
+          name: "Noto Sans Symbols 2",
+          data: notoSansSymbols2,
+        },
       ],
       graphemeImages: graphemeImages as Record<string, string>,
     }

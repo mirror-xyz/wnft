@@ -1186,6 +1186,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"emojibase-data@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "emojibase-data@npm:7.0.1"
+  peerDependencies:
+    emojibase: "*"
+  checksum: 54335bebf30b9e403b8abc33fed761e0378ebc2aad56b285706bdda20777a3f00ea0700253a853d40f7c20817788adbb580e50cbcb29894a16e2a16f8c1b7f9f
+  languageName: node
+  linkType: hard
+
+"emojibase@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "emojibase@npm:6.1.0"
+  checksum: a0f975a04451dc30ddbe7dddbfab68a71d209a4003c986ca7dc0171df6cf85605b678483006ee08cc6bb48bccb414de9e1bedab8afc50755d9183794fd2b1b22
+  languageName: node
+  linkType: hard
+
 "encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
@@ -4206,6 +4222,8 @@ __metadata:
     "@resvg/resvg-js": ^2.1.0
     "@typescript-eslint/eslint-plugin": ^5.42.0
     "@typescript-eslint/parser": ^5.42.0
+    emojibase: ^6.1.0
+    emojibase-data: ^7.0.1
     eslint: ^8.26.0
     eslint-config-prettier: ^8.5.0
     node-fetch: ^3.2.10
