@@ -242,7 +242,7 @@ export async function getWnft(
           style: "normal",
         },
       ],
-      graphemeImages: graphemeImages,
+      graphemeImages: graphemeImages as Record<string, string>,
     }
   );
 
