@@ -3,6 +3,7 @@ import satori from "satori";
 
 import interRegular from "../font/Inter-Regular.woff";
 import interSemiBold from "../font/Inter-SemiBold.woff";
+import graphemeImages from "./graphemeImages.json";
 import {
   darkTheme,
   fontWeight,
@@ -241,6 +242,7 @@ export async function getWnft(
           style: "normal",
         },
       ],
+      graphemeImages: graphemeImages,
     }
   );
 
