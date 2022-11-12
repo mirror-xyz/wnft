@@ -3,6 +3,7 @@ import satori from "satori";
 
 import interRegular from "../font/Inter-Regular.woff";
 import interSemiBold from "../font/Inter-SemiBold.woff";
+import notoSansSymbols2 from "../font/NotoSansSymbols2-Regular.ttf";
 import graphemeImages from "./graphemeImages.json";
 import {
   darkTheme,
@@ -241,6 +242,10 @@ export async function getWnft(
           weight: fontWeight.semiBold,
           style: "normal",
         },
+        // {
+        //   name: "Noto Sans Symbols 2",
+        //   data: notoSansSymbols2,
+        // },
       ],
       graphemeImages: graphemeImages as Record<string, string>,
     }
