@@ -170,7 +170,7 @@ export async function getCheckedImageUrl(image: {
 
     const buffer = await sharp(resBuffer)
       .resize(image.size.width, image.size.height, {
-        fit: sharp.fit.cover,
+        fit: sharp.fit.outside,
         withoutEnlargement: true,
       })
       .toFormat("jpeg")
