@@ -99,6 +99,16 @@ const wnfts: Record<string, WnftArgs> = {
     address: "🦺🤷‍♂️🤪abc",
     avatarUrl: null,
   },
+  ["really tall image"]: {
+    theme: "dark",
+    title: "really tall image",
+    featuredImageUrl:
+      "https://images.unsplash.com/photo-1652717009636-181efa262cee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+    displayName: "abc",
+    accent: "blue",
+    address: "abc",
+    avatarUrl: null,
+  },
   ["avatar placeholder"]: {
     theme: "dark",
     title: "abc",
@@ -520,6 +530,7 @@ export default function Home() {
           style={{
             display: "flex",
             flexDirection: "column",
+            alignItems: "flex-start",
           }}
         >
           <h1

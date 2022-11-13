@@ -15,8 +15,9 @@ import {
   Accent,
   getCheckedImageUrl,
   getTitleSize,
-  avatarSize,
   footerGradientHeight,
+  avatarImageSize,
+  featuredImageSize,
 } from "./util.js";
 
 export type { WnftArgs, Accent };
@@ -35,8 +36,14 @@ export async function getWnft(
   const themeStyles: ThemeStyles = theme === "light" ? lightTheme : darkTheme;
 
   const [featuredImageUrl, avatarUrl] = await Promise.all([
-    getCheckedImageUrl(uncheckedFeaturedImageUrl),
-    getCheckedImageUrl(uncheckedAvatarUrl),
+    getCheckedImageUrl({
+      url: uncheckedFeaturedImageUrl,
+      size: featuredImageSize,
+    }),
+    getCheckedImageUrl({
+      url: uncheckedAvatarUrl,
+      size: avatarImageSize,
+    }),
   ]);
 
   const titleSize = getTitleSize({
@@ -59,8 +66,8 @@ export async function getWnft(
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              width: wnftSize,
-              height: wnftSize / 2,
+              width: featuredImageSize.width,
+              height: featuredImageSize.height,
               display: "flex",
               position: "relative",
             }}
@@ -72,8 +79,8 @@ export async function getWnft(
                 objectFit: "cover",
                 position: "absolute",
               }}
-              width={wnftSize}
-              height={wnftSize / 2}
+              width={featuredImageSize.width}
+              height={featuredImageSize.height}
               src={featuredImageUrl}
             />
           </div>
@@ -149,8 +156,8 @@ export async function getWnft(
 
         <div
           style={{
-            width: avatarSize,
-            height: avatarSize,
+            width: avatarImageSize.width,
+            height: avatarImageSize.height,
             position: "relative",
             display: "flex",
           }}
@@ -164,7 +171,7 @@ export async function getWnft(
                 height: "100%",
                 objectFit: "cover",
                 position: "absolute",
-                borderRadius: avatarSize,
+                borderRadius: avatarImageSize.width,
                 display: "flex",
                 borderWidth: 4,
                 borderColor:
@@ -173,8 +180,8 @@ export async function getWnft(
                     : themeStyles.foregroundTertiary,
                 borderStyle: "solid",
               }}
-              width={avatarSize}
-              height={avatarSize}
+              width={avatarImageSize.width}
+              height={avatarImageSize.height}
               src={avatarUrl}
             />
           ) : (
@@ -184,7 +191,7 @@ export async function getWnft(
                 left: 0,
                 width: "100%",
                 height: "100%",
-                borderRadius: avatarSize,
+                borderRadius: avatarImageSize.width,
                 backgroundColor: themeStyles[accent],
               }}
             />

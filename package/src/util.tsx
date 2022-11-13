@@ -1,3 +1,5 @@
+import sharp from "sharp";
+
 export type Accent =
   | "blue"
   | "green"
@@ -125,8 +127,15 @@ export const darkTheme: ThemeStyles = {
 };
 
 export const wnftSize = 2048;
-export const avatarSize = 208;
 export const footerGradientHeight = 150;
+export const featuredImageSize = {
+  width: wnftSize,
+  height: wnftSize / 2,
+} as const;
+export const avatarImageSize = {
+  width: 208,
+  height: 208,
+} as const;
 
 export function getTitleSize(args: {
   titleLength: number;
@@ -139,34 +148,38 @@ export function getTitleSize(args: {
   }
 }
 
-export async function getCheckedImageUrl(
-  imageUrl: string | null
-): Promise<string | null> {
-  let checkedImageUrl: string | null;
-  if (imageUrl) {
-    try {
-      // check if valid URL
-      new URL(imageUrl);
-
-      // check if valid image
-      const res = await fetch(imageUrl);
-      if (!res.ok) {
-        throw new Error();
-      }
-
-      const buffer = Buffer.from(await res.arrayBuffer());
-
-      const base64Image = `data:${res.headers.get(
-        "content-type"
-      )};base64,${buffer.toString("base64")}`;
-
-      checkedImageUrl = base64Image;
-    } catch (err) {
-      checkedImageUrl = null;
-    }
-  } else {
-    checkedImageUrl = null;
+export async function getCheckedImageUrl(image: {
+  url: string | null;
+  size: { width: number; height: number };
+}): Promise<string | null> {
+  if (!image.url) {
+    return null;
   }
 
-  return checkedImageUrl;
+  try {
+    // check if valid URL
+    new URL(image.url);
+
+    // check if valid image
+    const res = await fetch(image.url);
+    if (!res.ok) {
+      return null;
+    }
+
+    const resBuffer = Buffer.from(await res.arrayBuffer());
+
+    const buffer = await sharp(resBuffer)
+      .resize(image.size.width, image.size.height, {
+        fit: sharp.fit.cover,
+        withoutEnlargement: true,
+      })
+      .toFormat("jpeg")
+      .toBuffer();
+
+    const base64Image = `data:image/jpeg;base64,${buffer.toString("base64")}`;
+
+    return base64Image;
+  } catch (err) {
+    return null;
+  }
 }
