@@ -2,6 +2,8 @@
 
 A node.js package to generate Writing NFT media, powered by [Satori](https://github.com/vercel/satori).
 
+Playground: [wnft.vercel.app](https://wnft.vercel.app/)
+
 ```ts
 import { getWnft } from "wnft";
 
