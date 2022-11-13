@@ -48,8 +48,6 @@ export function Wnft(props: WnftArgs & { name: string }) {
         display: "flex",
         flexDirection: "column",
         gap: 6,
-        fontSize: 13,
-        fontFamily: "sans-serif",
       }}
     >
       <div

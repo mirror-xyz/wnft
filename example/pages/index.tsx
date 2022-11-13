@@ -1,3 +1,4 @@
+import Head from "next/head";
 import * as React from "react";
 import type { WnftArgs } from "wnft";
 
@@ -500,19 +501,61 @@ const wnfts: Record<string, WnftArgs> = {
 
 export default function Home() {
   return (
-    <div
-      style={{
-        padding: 12,
-        columnGap: 12,
-        rowGap: 32,
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill,minmax(auto,min(100%,400px)))",
-        gridAutoRows: "max-content",
-      }}
-    >
-      {Object.entries(wnfts).map(([name, wnftArgs]) => {
-        return <Wnft key={name} {...wnftArgs} name={name} />;
-      })}
-    </div>
+    <>
+      <Head>
+        <title>wnft</title>
+      </Head>
+
+      <div
+        style={{
+          padding: 12,
+          fontSize: 13,
+          fontFamily: "sans-serif",
+          display: "flex",
+          flexDirection: "column",
+          rowGap: 18,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 18,
+              lineHeight: 1.2,
+            }}
+          >
+            wnft
+          </h1>
+
+          <a
+            style={{
+              textDecoration: "underline",
+            }}
+            href="https://github.com/mirror-xyz/wnft/"
+          >
+            github.com/mirror-xyz/wnft
+          </a>
+        </div>
+
+        <div
+          style={{
+            columnGap: 12,
+            rowGap: 32,
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fill,minmax(auto,min(100%,400px)))",
+            gridAutoRows: "max-content",
+          }}
+        >
+          {Object.entries(wnfts).map(([name, wnftArgs]) => {
+            return <Wnft key={name} {...wnftArgs} name={name} />;
+          })}
+        </div>
+      </div>
+    </>
   );
 }
