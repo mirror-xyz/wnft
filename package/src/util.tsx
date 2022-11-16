@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 import sharp from "sharp";
 
 export type Accent =
