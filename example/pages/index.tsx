@@ -507,6 +507,15 @@ const wnfts: Record<string, WnftArgs> = {
     avatarUrl:
       "https://mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2Fhb68H793Zqj8YleyB7rqt.png%3Fheight%3D1000%26width%3D1000&w=828&q=100",
   },
+  ["simplified chinese"]: {
+    theme: "dark",
+    title: "你好",
+    featuredImageUrl: null,
+    displayName: "satori",
+    accent: "blue",
+    address: "sartoshi.eth",
+    avatarUrl: null,
+  },
 };
 
 export default function Home() {
