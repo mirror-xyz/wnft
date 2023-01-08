@@ -9,5 +9,6 @@ export default defineConfig({
   loader: {
     ".woff": "binary",
     ".ttf": "binary",
+    ".otf": "binary",
   },
 });

@@ -3,6 +3,7 @@ import satori from "satori";
 
 import interRegular from "../font/Inter-Regular.woff";
 import interSemiBold from "../font/Inter-SemiBold.woff";
+import notoSansSimplifiedChinese from "../font/NotoSansSC-Regular.otf";
 import notoSansSymbols2 from "../font/NotoSansSymbols2-Regular.ttf";
 import graphemeImages from "./graphemeImages.json";
 import {
@@ -252,6 +253,10 @@ export async function getWnft(
         {
           name: "Noto Sans Symbols 2",
           data: notoSansSymbols2,
+        },
+        {
+          name: "Noto Sans Simplified Chinese",
+          data: notoSansSimplifiedChinese,
         },
       ],
       graphemeImages: graphemeImages as Record<string, string>,
