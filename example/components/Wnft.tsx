@@ -147,7 +147,7 @@ export function Wnft(props: WnftArgs & { name: string }) {
               >
                 {(["light", "dark"] as const).map((themeValue) => {
                   return (
-                    <label key={arg} style={{ display: "flex", gap: 3 }}>
+                    <label key={themeValue} style={{ display: "flex", gap: 3 }}>
                       <input
                         type="radio"
                         value={themeValue}
@@ -193,7 +193,10 @@ export function Wnft(props: WnftArgs & { name: string }) {
                   ] as const
                 ).map((accentValue: Accent) => {
                   return (
-                    <label key={arg} style={{ display: "flex", gap: 3 }}>
+                    <label
+                      key={accentValue}
+                      style={{ display: "flex", gap: 3 }}
+                    >
                       <input
                         type="radio"
                         value={accentValue}
